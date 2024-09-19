@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+        background-color: rgb(22, 22, 22);
+      }
+
+      section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+      }
+
+      .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .div-button{
+        display: flex;
+      }
+
+      button{
+        display: flex;
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: capitalize;
+        color: white;
+        background-color: rgb(33, 155, 255);
+        border: none;
+        padding: 10px;
+        border-radius: 3px;
+        margin: 10px;
+      }
+
+      button:hover{
+        cursor: pointer;
+        background-color: rgb(29, 126, 206);
+        transition: 0.2s ease;
+      }
+
+      button:active{
+        background-color: rgb(23, 100, 163);
+      }
+
+      p{
+        display: flex;
+        font-size: 28px;
+        font-family: sans-serif;
+        font-weight: bold;
+        color: white;
+        margin: 0;
+        padding: 4px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        
+        <div class="div-button">
+          <!-- Buttons for playing Rock, Paper, Scissors -->
+          <button onclick="
+          var randomInteger = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+          if (randomInteger === 1){
+            setMessage('Computer picked rock, so score is tie');
+            ties++;
+          } else if(randomInteger === 2){
+            setMessage('Computer picked paper, so you lose');
+            losses++;
+          } else {
+            setMessage('Computer picked scissors, so you win');
+            wins++;
+          }
+          updateScore();
+        ">
+          rock
+        </button>
+  
+        <button onclick="
+          var randomInteger = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+          if (randomInteger === 1){
+            setMessage('Computer picked rock, so you win');
+            wins++;
+          } else if(randomInteger === 2){
+            setMessage('Computer picked paper, so score is tie');
+            ties++;
+          } else {
+            setMessage('Computer picked scissors, so you lose');
+            losses++;
+          }
+          updateScore();
+        ">
+          paper
+        </button>
+  
+        <button onclick="
+          var randomInteger = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+          if (randomInteger === 1){
+            setMessage('Computer picked rock, so you lose');
+            losses++;
+          } else if(randomInteger === 2){
+            setMessage('Computer picked paper, so you win');
+            wins++;
+          } else {
+            setMessage('Computer picked scissors, so score is tie');
+            ties++;
+          }
+          updateScore();
+        ">
+          scissors
+        </button>
+        </div>
+  
+        <!-- Display score -->
+        <div>
+          <p>Wins: <span id="wins">0</span></p>
+          <p>Losses: <span id="losses">0</span></p>
+          <p>Ties: <span id="ties">0</span></p>
+        </div>
+  
+        <!-- Display the message -->
+        <div>
+          <p id="message">Make your choice!</p>
+        </div>
+  
+        <!-- Reset button -->
+        <button onclick="resetGame()">Reset</button>
+      </div>
+    </section>
+
+    <script>
+      // Variables to track the score
+      let wins = 0;
+      let losses = 0;
+      let ties = 0;
+
+      // Function to update the score display
+      function updateScore() {
+        document.getElementById('wins').textContent = wins;
+        document.getElementById('losses').textContent = losses;
+        document.getElementById('ties').textContent = ties;
+      }
+
+      // Function to update the message display
+      function setMessage(message) {
+        document.getElementById('message').textContent = message;
+      }
+
+      // Function to reset the game
+      function resetGame() {
+        wins = 0;
+        losses = 0;
+        ties = 0;
+        updateScore();
+        setMessage('Game reset! Make your choice!');
+      }
+    </script>
+  </body>
+</html>
